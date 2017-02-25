@@ -1,0 +1,271 @@
+$('#mystory').on('click', function(e) {			
+	$('.work').css('display', 'none');
+	$('.story').css('display', 'inline');
+});
+
+$('#mywork').on('click', function(e) {	
+	$('.story').css('display', 'none');
+	$('.work').css('display', 'inline');
+});		
+
+$('body').keydown(function(e) {
+	e.preventDefault();
+	// get current slide
+	var current = $('.flex--active').data('slide');
+	
+	// determine the keypress
+	if ((e.which === 34) || (e.which === 39) || (e.which === 40)){//((e.keywhich === 33) || (e.keywhich === 37) || (e.keywhich === 38)) {	
+		if (current == 12) {
+			var next = $('.first').data('slide');
+		}
+		else {
+			var next = $('.flex--active').next().data('slide');	
+		}	
+		$('.active').next().addClass('active');			
+	}
+	else if ((e.which === 33) || (e.which === 37) || (e.which === 38)) {
+		if (current == 1) {
+			var next = $('.last').data('slide');
+		}
+		else {
+			var next = $('.flex--active').prev().data('slide');	
+		}	
+		$('.active').prev().addClass('active');		
+	}
+	$('.slide-nav').removeClass('active');
+	
+	$('.slider__wrapper').find('.flex__container[data-slide=' + next + ']').addClass('flex--preStart');
+		$('.flex--active').addClass('animate--end');
+		setTimeout(function() {
+			$('.flex--preStart').removeClass('animate--start flex--preStart').addClass('flex--active');
+			$('.animate--end').addClass('animate--start').removeClass('animate--end flex--active');
+		}, 800);
+});
+
+$('.slide-nav').on('click', function(e) {
+	e.preventDefault();
+	// get current data-slide the user is viewing
+	var current = $('.flex--active').data('slide');
+	// get button data-slide the user is going to/ clicked on: data is the slide number
+	if ($(this).data('slide') == '999') { var next = '11'; }
+	else { var next = $(this).data('slide'); }
+		
+	$('.slide-nav').removeClass('active');
+	$(this).addClass('active');
+
+	if (current === next) {
+		return false;
+	} else {
+		$('.slider__wrapper').find('.flex__container[data-slide=' + next + ']').addClass('flex--preStart');
+		$('.flex--active').addClass('animate--end');
+		setTimeout(function() {
+			$('.flex--preStart').removeClass('animate--start flex--preStart').addClass('flex--active');
+			$('.animate--end').addClass('animate--start').removeClass('animate--end flex--active');
+		}, 800);
+	}
+});	
+
+
+
+
+
+if (screen.width <= 450) {
+	var width = 300;
+	var height = 240;
+}
+else if (screen.width <= 768) {
+	var width = 525;
+	var height = 420;
+}
+else {
+	var width = 750;
+	var height = 600;
+}
+
+var radius = Math.min(width, height) / 2;
+
+// Mapping of step names to colors.
+var colors = {
+  'Adobe': '#A78BC6', //purple
+  'Software': '#0089BF', //blue
+  'Files': '#90EED8', //blue
+  'Content': '#80C5DF', //blue
+  'Microsoft': '#21DDB1', //blue
+  'Coding': '#AFE261', //green
+  'Languages': '#A7F1B0', //green
+  'Framework': '#90EED8', //lblue
+  'Skill': '#ffe7dd'
+};
+
+// Total size of all segments; we set this later, after loading the data.
+var totalSize = 0; 
+
+var vis = d3.select('#chart').append('svg:svg')
+    .attr('width', width)
+    .attr('height', height)
+    .append('svg:g')
+    .attr('id', 'container')
+    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+
+var partition = d3.partition()
+    .size([2 * Math.PI, radius * radius]);
+
+var arc = d3.arc()
+    .startAngle(function(d) { return d.x0; })
+    .endAngle(function(d) { return d.x1; })
+    .innerRadius(function(d) { return Math.sqrt(d.y0); })
+    .outerRadius(function(d) { return Math.sqrt(d.y1); });
+
+// Use d3.text and d3.csvParseRows so that we do not need to have a header
+// row, and can receive the csv as an array of arrays.
+d3.text('data.csv', function(text) {
+  var csv = d3.csvParseRows(text);
+  var json = buildHierarchy(csv);
+  createVisualization(json);
+});
+
+// Main function to draw and set up the visualization, once we have the data.
+function createVisualization(json) {
+
+  // Bounding circle underneath the sunburst, to make it easier to detect
+  // when the mouse leaves the parent g.
+  vis.append('svg:circle')
+      .attr('r', radius)
+      .style('opacity', 0);
+
+  // Turn the data into a d3 hierarchy and calculate the sums.
+  var root = d3.hierarchy(json)
+      .sum(function(d) { return d.size; })
+      .sort(function(a, b) { return b.value - a.value; });
+  
+  // For efficiency, filter nodes to keep only those large enough to see.
+  var nodes = partition(root).descendants()
+      .filter(function(d) {
+          return (d.x1 - d.x0 > 0.005); // 0.005 radians = 0.29 degrees
+      });
+
+  var path = vis.data([json]).selectAll('path')
+      .data(nodes)
+      .enter().append('svg:path')
+      .attr('display', function(d) { return d.depth ? null : 'none'; })
+      .attr('d', arc)
+      .attr('fill-rule', 'evenodd')
+      .style('fill', function(d) { 
+			if (!colors[d.data.name]) {return colors['Skill'];}
+			else {return colors[d.data.name];}
+		})
+      .style('opacity', 1)
+      .on('mouseover', mouseover);
+
+  // Add the mouseleave handler to the bounding circle.
+  d3.select('#container').on('mouseleave', mouseleave);
+
+  // Get total size of the tree = value of root node from partition.
+  totalSize = path.datum().value;
+  
+  //Draw bar graph
+  d3.select('#bargraph')
+		.attr('width', width/2)
+		.attr('height', height)
+		.attr('background-color', 'red');
+	
+	
+  
+  
+  
+  
+  d3.select('#bargraph').on('mouseleave', mouseleave);
+  
+ };
+
+// Fade all but the current sequence, and show it in the breadcrumb trail.
+function mouseover(d) {
+
+  var skillName = d.data.name;
+	console.log(skillName);
+	
+	d3.select('#skillName')
+		.text(skillName);
+		
+	d3.select('#displaySkill')
+		.style('visibility', '');
+
+  var sequenceArray = d.ancestors().reverse();
+  sequenceArray.shift(); // remove root node from the array
+
+  // Fade all the segments.
+  d3.selectAll('path')
+      .style('opacity', 0.5);
+
+  // Then highlight only those that are an ancestor of the current segment.
+  vis.selectAll('path')
+      .filter(function(node) {
+                return (sequenceArray.indexOf(node) >= 0);
+              })
+      .style('opacity', 1);
+	  
+  
+}
+
+// Restore everything to full opacity when moving off the visualization.
+function mouseleave(d) {
+
+  // Deactivate all segments during transition.
+  d3.selectAll('path').on('mouseover', null);
+
+  // Transition each segment to full opacity and then reactivate it.
+  d3.selectAll('path')
+      .transition()
+      .duration(1000)
+      .style('opacity', 1)
+      .on('end', function() {
+              d3.select(this).on('mouseover', mouseover);
+            });
+
+  d3.select('#displaySkill')
+      .style('visibility', 'hidden');
+}
+
+// Take a 2-column CSV and transform it into a hierarchical structure suitable
+// for a partition layout. The first column is a sequence of step names, from
+// root to leaf, separated by hyphens. The second column is a count of how 
+// often that sequence occurred.
+function buildHierarchy(csv) {
+  var root = {'name': 'root', 'children': []};
+  for (var i = 0; i < csv.length; i++) {
+    var sequence = csv[i][0];
+    var size = +csv[i][1];
+    if (isNaN(size)) { // e.g. if this is a header row
+      continue;
+    }
+    var parts = sequence.split('-');
+    var currentNode = root;
+    for (var j = 0; j < parts.length; j++) {
+      var children = currentNode['children'];
+      var nodeName = parts[j];
+      var childNode;
+      if (j + 1 < parts.length) {
+   // Not yet at the end of the sequence; move down the tree.
+ 	var foundChild = false;
+ 	for (var k = 0; k < children.length; k++) {
+ 	  if (children[k]['name'] == nodeName) {
+ 	    childNode = children[k];
+ 	    foundChild = true;
+ 	    break;
+ 	  }
+ 	}
+  // If we don't already have a child node for this branch, create it.
+ 	if (!foundChild) {
+ 	  childNode = {'name': nodeName, 'children': []};
+ 	  children.push(childNode);
+ 	}
+ 	currentNode = childNode;
+      } else {
+ 	// Reached the end of the sequence; create a leaf node.
+ 	childNode = {'name': nodeName, 'size': size};
+ 	children.push(childNode);
+      }
+    }
+  }
+  return root;
+};
