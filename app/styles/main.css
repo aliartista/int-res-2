@@ -68,44 +68,49 @@ table {
 }
 
 .navi {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	width: 65%;
-	height: 50px;
-	padding: 15px 0;
+	margin-top: 15px;
 	z-index: 999;
-	background-color: rgba(60, 72, 89, 0.3);
-	overflow: hidden;
-	white-space: nowrap;
 }
-.navi-contact {
+#navi-contact {
+	position: absolute;
+	top: 0;
 	left: 65%;
-	right: 0;
 	width: 35%;
-	z-index: 998;
+	margin-top: 15px;
+	z-index: 999;
 }
-.navi a {
-	display: inline;
-	font-size: 18px;
-	box-shadow: none;
-	border: none;
-	height: 10px;
-	margin: 0 15px;
-	text-decoration: none;
-	color: white;
+
+#buttons, #dropdowns {
+	display: flex;
+	justify-content: center;
 }
-.navi a:hover {	
-	border-bottom: 2px white solid;
+#buttons button, #navi-contact button {
+	display: inline-block;
+    padding: 12px 12px;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 15px;
+    text-decoration: none;
+    color: #fff;
+    margin: 0 12px;
+	font-size: 24px;	
+	background-color: rgba(0,0,0,0.1);
+	cursor: pointer;
 }
-.navi a.active {
-	border-bottom: 2px white solid;
-}
-.navi .work { /* switches to display inline when "My Work" is clicked: */
+#res-dropdown, #port-dropdown {
 	display: none;
+	background-color: rgba(0,0,0,0.1);
+	border-radius: 15px;	
+	margin-top: 10px;
 }
-.navi .story {
-	display: inline; /* switches to dislay none when "My Work" is clicked */
+#dropdowns #res-dropdown a, #dropdowns #port-dropdown a {
+	color: white;
+	padding: 10px 16px;
+	text-decoration: none;
+	display: block;
 }
 
 body {
@@ -145,42 +150,118 @@ body {
 
 .text--big {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 6.5em;
 	font-weight: 700;
-	line-height: 110px;
 	margin-left: -8px;
 	color: white;
 }
-@media screen and (max-width: 1025px) and (min-width: 791px) { /* Have little squares for navigation*/
-	.text--big {
-		font-size: 5em;
-		line-height: 80px;
-	}
-}
-@media screen and (max-width: 790px) and (min-width: 481px) { /* Have little squares for navigation*/
-	.text--big {
-		font-size: 4em;
-		line-height: 80px;
-	}
-}
-@media screen and (max-width: 480px) and min-width: 150px) {
-	.text--big {
-		font-size: 2em;
-		line-height: 30px;
-	}
-}
 
-.text--normal {
-	font-size: 20px;
+.subtitle {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700;
+	color: white;
+	margin: 10px 0;
+}
+.subtitle::hover {
+	cursor: pointer;
+}
+.text--normal, li {
 	color: rgba(255, 255, 255, 0.9);
-	line-height: 26px;
 	font-weight: 500;
 	margin-top: 25px;
+	text-overflow: ellipsis;
 }
-@media screen and (max-width: 1024px) {
+
+li {
+	margin:0;
+}
+
+.accordion-content {
+	display: none;
+}
+.accordion-img {
+	display: none;
+}
+
+@media screen and (min-width: 791px) { /* Have little squares for navigation*/
+	.text--big {
+		font-size: 3.5em;
+		line-height: 75px;
+		line-height: 60px;
+	}
+	.subtitle {
+		font-size: 2em;
+	}
+	#buttons button , #navi-contact button {
+		font-size: 20px;
+		padding: 8px 8px;
+	}
 	.text--normal {
+		font-size: 18px;
+		line-height: 24px;
+	}	
+	.skill_icon_container img {
+		height: 90px;
+		padding: 10px;
+	}
+	#dropdowns #res-dropdown a, #dropdowns #port-dropdown a {
 		font-size: 16px;
 	}
+}
+@media screen and (max-width: 790px) and (min-width: 481px) { 
+	.text--big {
+		font-size: 2.5em;
+		line-height: 40px;
+		padding-top: 10%;
+	}
+	.subtitle {
+		font-size: 1.5em;
+	}
+	#buttons button , #navi-contact button {
+		font-size: 18px;
+		padding: 10px 10px;
+	}
+	.text--normal {
+		font-size: 14px;
+		line-height: 24px;
+	}
+	.skill_icon_container img {
+		height: 60px;
+		padding: 5px;
+	}
+	#dropdowns #res-dropdown a, #dropdowns #port-dropdown a {
+		font-size: 16px;
+	}
+}
+@media screen and (max-width: 480px) and (min-width: 150px) {
+	.text--big {
+		font-size: 1em;
+		line-height: 15px;
+		padding-top: 10%;		
+	}
+	.subtitle {
+		font-size: .7em;
+	}
+	#buttons button , #navi-contact button {
+		font-size: 16px;
+		padding: 7px;
+	}
+	.text--normal {
+		font-size: 12px;	
+	    line-height: 16px;
+	}
+	.skill_icon_container img {
+		height: 30px;
+		padding: 3px;
+	}
+	#dropdowns #res-dropdown a, #dropdowns #port-dropdown a {
+		font-size: 14px;
+	}
+}
+.skillinfo {
+	display:none;
+	font-style: italic;
+	padding: 0;
+	margin: 0;
 }
 
 .flex__item {
@@ -241,8 +322,9 @@ body {
 .flex--red .flex__item--right {background: #FCB4AA;color: #3C4859;}
 
 .flex__content {
-	margin-left: 15%;
-	width: 55%;
+	margin-top: 25%;
+	margin-left: 10%;
+	width: 40vw;
 	opacity: 1;
 	transform: translate3d(0,0,0);
 	transition: transform 0.2s linear 0.2s, opacity 0.1s linear 0.2s;
@@ -251,21 +333,12 @@ body {
 .display__img {
 	position: absolute;
 	bottom: 15%;
-	right: 15%;
-	max-width: 40%;
+	right:10%;
+	max-width: 35%;
 	max-height: 70%;
 	opacity: 1;
 	transform: translate3d(0,0,0);
 	transition: opacity 0.43s 0.6s, transform 0.4s 0.65s cubic-bezier(0, 0.88, 0.4, 0.93);
-}
-
-.skill_icon_container {
-	margin: 20px 0px;
-}
-
-.skill_icon_container img {
-	height: 90px;
-	padding: 5px;
 }
 
 /* Animate-START point */

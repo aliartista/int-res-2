@@ -11,6 +11,7 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -25,27 +26,30 @@
   <body>
     <!--[if IE]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    
-     <div class="navi">
-		<a href="#" class="slide-nav active" id = "mystory" data-slide="1">My Story</a>		
-		<a href="#" class="slide-nav" id = "mywork" data-slide="6">My Work</a>			
-		<a href="#" class="slide-nav work" data-slide="6">Church Finder</a>
-		<a href="#" class="slide-nav work" data-slide="7">Blog Site</a> 				
-		<a href="#" class="slide-nav work" data-slide="8">Redesign BCM</a> 				
-		<a href="#" class="slide-nav work" data-slide="9">Medical Site</a> 			
-		<a href="#" class="slide-nav work" data-slide="10">Graphic Design</a> 				  
-		<a href="#" class="slide-nav work" data-slide="11">Video Design</a> 			
-		<a href="#" class="slide-nav work" data-slide="12">Traditional Art</a> 		
-		<a href="#" class="slide-nav story" data-slide="1">Alicia</a>
-		<a href="#" class="slide-nav story" data-slide="2">Education</a>
-		<a href="#" class="slide-nav story" data-slide="3">Skills</a>
-		<a href="#" class="slide-nav story" data-slide="4">Experience 1</a>
-		<a href="#" class="slide-nav story" data-slide="5">Experience 2</a>		
+    <![endif]-->	
+	
+     <div class="navi">	
+		<div id = "buttons">
+			<button href = "#" class = "slide-nav" data-slide = "1" id = "res-dropdownbttn">My Story</button>
+			<button href = "#" class = "slide-nav" data-slide = "5" id = "port-dropdownbttn">My Work</button>
+		</div>
+		<div id = "dropdowns">
+			<div id = "res-dropdown">
+				<a href = "#" class = "slide-nav" data-slide = "2" >Education</a>
+				<a href = "#" class = "slide-nav" data-slide = "3" >Skills</a>
+				<a href = "#" class = "slide-nav" data-slide = "4" >Experience</a>
+			</div>
+			<div id = "port-dropdown">
+				<a href = "#" class = "slide-nav" data-slide = "5" >Web Design</a>
+				<a href = "#" class = "slide-nav" data-slide = "6" >Graphic Design</a>
+				<a href = "#" class = "slide-nav" data-slide = "7" >Video Design</a>
+			</div>
+		</div>
 	</div>
-	<div class = "navi navi-contact">
-		<a href="#">Contact</a> 		<!-- opens up pop up with email form -->
+	<div id = "navi-contact">
+		<button href="#">Contact</button> 		
 	</div>
+
 	
 	
 	<div class="slider__wrapper">
@@ -73,9 +77,11 @@
 			  <div class="flex__content">
 				<h1 class = "text--big">Education</h1>
 				<p class="text--normal">Web Development and Design Major at the University of Central Florida<br/>
-					- Minors: Graphic Design and Information Technology<br/>
-					- GPA: 3.58<br/>
-					- Expected Graduation: December 2017<br/>
+					<ul>
+						<li>Minors: Graphic Design and Information Technology</li>
+						<li>GPA: 3.58</li>
+						<li>Expected Graduation: December 2017</li>
+					</ul>
 				</p>
 			  </div>
 			</div>
@@ -84,33 +90,50 @@
 		</div>
 		
 	<!-- SKILLS + QUALIFICATIONS -->		 
-		<div class="flex__container flex--orange animate--start" data-slide="3"> 
+		<div class="flex__container flex--green animate--start" data-slide="3"> 
 			<div class="flex__item flex__item--left">
 			  <div class="flex__content">
 				<h1 class = "text--big">Skills</h1>
-				<p class="text--normal">I'm going to make this more of a accordion list, ie, click on 'graphics' and all of my skills related to graphics show up, along with a text version of these skills (in case people do not recognize the logo)
-				</p>
-				<div class = "skill_icon_container">
-					<img src = "images/icons/js.png">
-					<img src = "images/icons/html.png">
-					<img src = "images/icons/css.png">
-					<img src = "images/icons/php.png">
-					<img src = "images/icons/mySql.png">
-					<img src = "images/icons/jquery.png">
-					<img src = "images/icons/d3.png">					
-					<img src = "images/icons/c.png">					
-					<img src = "images/icons/id.png">
-					<img src = "images/icons/ai.png">
-					<img src = "images/icons/pr.png">
-					<img src = "images/icons/ps.png">
-					<img src = "images/icons/ae.png">
-					<img src = "images/icons/au.png">					
-					<img src = "images/icons/dnn.png">
-					<img src = "images/icons/github.png">
-					<img src = "images/icons/sharepoint.png">
-					<img src = "images/icons/materialize.png">					
-					<img src = "images/icons/dropbox.png">
-				</div>
+				<h3 class = "subtitle accordion-title" id = "skills-adobe">Adobe</h3>
+					<div class = "accordion-content" id = "skills-adobe-content">
+						<div class = "skill_icon_container">
+							<p class = "text--normal skillinfo" style = "display: block;">
+								Indesign, Illustrator, Premiere, Photoshop, AfterEffects, Audition</p>
+							<img src = "images/icons/id.png">
+							<img src = "images/icons/ai.png">
+							<img src = "images/icons/pr.png">
+							<img src = "images/icons/ps.png">
+							<img src = "images/icons/ae.png">
+							<img src = "images/icons/au.png">
+						</div>		
+					</div>
+				<h3 class = "subtitle accordion-title" id = "skills-code">Code</h3>	
+					<div class = "accordion-content" id = "skills-code-content">
+						<div class = "skill_icon_container">
+							<p class = "text--normal skillinfo" style = "display: block;">
+								Javascript, HTML, CSS, PHP, mySql, jQuery, D3, C language</p>
+							<img src = "images/icons/js.png">
+							<img src = "images/icons/html.png">
+							<img src = "images/icons/css.png">
+							<img src = "images/icons/php.png">
+							<img src = "images/icons/mySql.png">
+							<img src = "images/icons/jquery.png">
+							<img src = "images/icons/d3.png">					
+							<img src = "images/icons/c.png">
+						</div>		
+					</div>
+				<h3 class = "subtitle accordion-title" id = "skills-soft">Software</h3>	
+					<div class = "accordion-content" id = "skills-soft-content">
+						<div class = "skill_icon_container">
+							<p class = "text--normal skillinfo" style = "display: block;">
+								Dot Net Nuke, Github, Sharepoint, Materialize, Dropbox</p>
+							<img src = "images/icons/dnn.png">
+							<img src = "images/icons/github.png">
+							<img src = "images/icons/sharepoint.png">
+							<img src = "images/icons/materialize.png">					
+							<img src = "images/icons/dropbox.png">
+						</div>		
+					</div>
 			  </div>
 			</div>
 			<div class="flex__item flex__item--right"></div>
@@ -125,147 +148,141 @@
 		</div>
 		
 	<!-- EXPERIENCE: ORANGE COUNTY -->		 
-		<div class="flex__container flex--orange animate--start" data-slide="4"> 
+		<div class="flex__container flex--lblue animate--start" data-slide="4"> 
 			<div class="flex__item flex__item--left">
 			  <div class="flex__content">
-				<h1 class = "text--big" style = "overflow-wrap: break-word;">Web and Communications Intern</h1>
-				<p class="text--normal">
-					May 2016 - Present: Orange County Government, Internal Systems and Services<br/>
-					- Utilized Dot Net Nuke and Sharepoint with html and css to manage the development 
-						and live sites for the intranet
-					- Developped documentation for the Intranet redesign, and trained the HR department
-						on how to edit the HR subsite
-				</p>
-				<div class = "skill_icon_container">
-					<img src = "images/icons/sharepoint.png">
-					<img src = "images/icons/dnn.png">
-					<img src = "images/icons/html.png">
-					<img src = "images/icons/css.png">
-					<img src = "images/icons/ps.png">
-				</div>
+				<h1 class = "text--big">Experience</h1>
+				<h3 class = "subtitle accordion-title" id = "experience-oc">Web and Communications Intern</h3>
+					<div class = "accordion-content" id = "experience-oc-content">
+						<p class="text--normal">
+							May 2016 - Present: Orange County Government, Internal Systems and Services
+							<ul>
+								<li>Utilized Dot Net Nuke and Sharepoint with html and css to manage the development 
+									and live sites for the intranet</li>
+								<li>Developped documentation for the Intranet redesign, and trained the HR department
+								on how to edit the HR subsite</li>
+							</ul>
+						</p>
+						<div class = "skill_icon_container">
+						    <p class = "text--normal skillinfo">Skills: Microsoft Sharepoint, Dot Net Nuke Content
+								Manager, CSS, Adobe Photoshop</p>
+							<img src = "images/icons/sharepoint.png">
+							<img src = "images/icons/dnn.png">
+							<img src = "images/icons/html.png">
+							<img src = "images/icons/css.png">
+							<img src = "images/icons/ps.png">
+						</div>
+					</div>
+				<h3 class = "subtitle accordion-title" id = "experience-cc">Crossman & Company</h3>
+					<div class = "accordion-content" id = "experience-cc-content">
+						<p class = "text--normal"> 
+							Feb 2016 - Dec 2016: Crossman and Co<br/>
+							<ul>
+								<li>Edited videos about grocery centers on the market by editing raw 
+									footage, creating graphic assets, mixing music, and compiling assets 
+									into an informative video in Premiere</li>
+								<li>Managed videos using Youtube, Vimeo and Dropbox: used Constant 
+									Contact to deliver videos to clients</li>
+							</ul>
+						</p>
+						<div class = "skill_icon_container">
+							<p class = "text--normal skillinfo">Skills: Adobe Premiere, Adobe Photoshop, 
+								Adobe AfterEffects, Adobe Audition, Dropbox</p>
+							<img src = "images/icons/pr.png">
+							<img src = "images/icons/ps.png">
+							<img src = "images/icons/ae.png">
+							<img src = "images/icons/au.png">
+							<img src = "images/icons/dropbox.png">
+						</div>
+					</div>				
 			  </div>
 			</div>
 			<div class="flex__item flex__item--right"></div>
-			<img class="display__img" src="images/oc.png" />
+			<img class="display__img accordion-img" id = "experience-oc-img" src = "images/oc.png"/>
+			<img class="display__img accordion-img" id = "experience-cc-img" src = "images/cc.png"/>
 		</div>	
 
-	<!-- EXPERIENCE: CROSSMAN & CO -->		 
-		<div class="flex__container flex--lblue animate--start" data-slide="5"> 
+	<!-- WEB DESIGN -->
+		  <div class="flex__container flex--orange animate--start" data-slide="5"> 
 			<div class="flex__item flex__item--left">
 			  <div class="flex__content">
-				<h1 class = "text--big">Video Editor</h1>
-				<p class="text--normal">
-					Feb 2016 - Dec 2016: Crossman and Co<br/>
-					- Edited videos about grocery centers on the market by editing raw footage, 
-						creating graphic assets, mixing music, and compiling assets into an 
-						informative video in Premiere
-					- Managed videos using Youtube, Vimeo and Dropbox: used Constant Contact to 
-						deliver videos to clients
-				</p>
-				<div class = "skill_icon_container">
-					<img src = "images/icons/pr.png">
-					<img src = "images/icons/ps.png">
-					<img src = "images/icons/ae.png">
-					<img src = "images/icons/au.png">
-					<img src = "images/icons/dropbox.png">
-				</div>
+				<h1 class = "text--big">Web Design</h1>
+				<h3 class = "subtitle accordion-title" id = "web-design-cf">Church Finder: Web Application</h3>
+					<div class = "accordion-content" id = "web-design-cf-content">
+						<p class="text--normal">A local church search application, using PHP and MySQL to allow 
+							UCF-area students to find local churches based on their personal search parameters.
+							It includes user accounts for students to save their churches, and for church 
+							leaders to update their church information.
+						</p>
+						<div class = "skill_icon_container">
+							<p class = "text--normal skillinfo">PHP, HTML, CSS, mySql, Adobe Photoshop</p>
+							<img src = "images/icons/php.png">
+							<img src = "images/icons/html.png">
+							<img src = "images/icons/css.png">
+							<img src = "images/icons/mySql.png">
+							<img src = "images/icons/ps.png">
+						</div>
+					</div>
+				<h3 class = "subtitle accordion-title" id = "web-design-bcm">Baptist Collegiate Ministries: Side Redesign</h3>
+					<div class = "accordion-content" id = "web-design-bcm-content">
+						<p class = "text--normal">
+							Redesigned the BCM &#64; UCF wordpress site by:
+							<ul>
+								<li>creating a modern and mobile-friendly design</li>
+								<li>updating brand with images, content and colors</li>
+								<li>adding a Google Maps, Google Calendar and Facebook Feed API</li>
+							</ul>
+						</p>
+						<div class = "skill_icon_container">
+							<p class = "text--normal skillinfo">Skills: Wordpress, PHP, HTML, CSS</p>
+							<img src = "images/icons/wordpress.png">
+							<img src = "images/icons/php.png">
+							<img src = "images/icons/html.png">
+							<img src = "images/icons/css.png">
+						</div>		
+					</div>
+				<h3 class = "subtitle accordion-title" id = "web-design-hp">HP Everything: Blog Quiz Mockup</h3>
+					<div class = "accordion-content" id = "web-design-hp-content">
+						<p class = "text--normal">A template for a blog site, which include an article page, 
+							quiz page and image gallery, filled in with Harry Potter related content.</p>
+						<div class = "skill_icon_container">
+							<p class = "text--normal skillinfo">Javascript, HTML, CSS, Adobe Photoshop</p>
+							<img src = "images/icons/js.png">
+							<img src = "images/icons/html.png">
+							<img src = "images/icons/css.png">
+							<img src = "images/icons/ps.png">
+						</div>		
+					</div>
+				<h3 class = "subtitle accordion-title" id = "web-design-med"></h3>	
+					<div class = "accordion-content" id = "web-design-med-content">
+						<p class = "text--normal">A template for a small medical company's site, which include
+							an a page for services, patient resources, about us, new patient and testimonials,
+							with many call to action buttons on each page to contact the company.</p>
+						<div class = "skill_icon_container">
+							<p class = "text--normal skillinfo">Skills: Materialize, jQuery, HTML, CSS, Adobe Photoshop</p>
+							<img src = "images/icons/materialize.png">
+							<img src = "images/icons/jquery.png">
+							<img src = "images/icons/html.png">
+							<img src = "images/icons/css.png">
+							<img src = "images/icons/ps.png">
+						</div>		
+					</div>					
 			  </div>
 			</div>
 			<div class="flex__item flex__item--right"></div>
-			<img class="display__img" src="images/cc.png" />
-		</div>		
-
- 
-	<!-- CHURCH FINDER -->
-		  <div class="flex__container flex--lblue animate--start" data-slide="6"> 
-			<div class="flex__item flex__item--left">
-			  <div class="flex__content">
-				<h1 class = "text--big">Web Application</h1>
-				<p class="text--normal">A local church search application, using PHP and MySQL to allow 
-					UCF-area students to find local churches based on their personal search parameters.
-					It includes user accounts for students to save their churches, and for church 
-					leaders to update their church information.
-				</p>
-				<div class = "skill_icon_container">
-					<img src = "images/icons/php.png">
-					<img src = "images/icons/html.png">
-					<img src = "images/icons/css.png">
-					<img src = "images/icons/mySql.png">
-					<img src = "images/icons/ps.png">
-				</div>
-			  </div>
+			<a href="http://aliciamunroe.com/churchfinder" target = "_blank">
+				<img class = "display__img accordion-img" id = "web-design-cf-img" src="images/Church Finder Logo.png" /></a>
+			<a href = "http://ucfbcm.com/join-in-test/" target = "_blank">
+				<img class = "display__img accordion-img" id = "web-design-bcm-img" src="images/BCM Logo.png"/></a>
+			<a href="http://aliciamunroe.com/blog" target="_blank">
+				<img class = "display__img accordion-img" id = "web-design-hp-img" src="images/Blog Logo.png" /></a>
+			<a href="http://aliciamunroe.com/medical" target="_blank">
+				<img class = "display__img accordion-img" id = "web-design-med-img" src="images/Medical Logo.png" /></a>
 			</div>
-			<div class="flex__item flex__item--right"></div>
-			<a href="http://aliciamunroe.com/churchfinder" target = "_blank"><img class="display__img" src="images/Church Finder Logo.png" /></a>
-		  </div>
-		  
-	<!-- HP EVERYTHING -->
-		  <div class="flex__container flex--dblue animate--start" data-slide="7">
-			<div class="flex__item flex__item--left">
-			  <div class="flex__content">
-				<h1 class = "text--big">Blog Site Template</h1>
-				<p class="text--normal">A template for a blog site, which include an article page, 
-					quiz page and image gallery, filled in with Harry Potter related content. 
-					</p>
-				<div class = "skill_icon_container">
-					<img src = "images/icons/js.png">
-					<img src = "images/icons/html.png">
-					<img src = "images/icons/css.png">
-					<img src = "images/icons/ps.png">
-				</div>
-			  </div>
-			</div>
-			<div class="flex__item flex__item--right"></div>
-			<a href="http://aliciamunroe.com/blog" target="_blank"><img class="display__img" src="images/Blog Logo.png" /></a>
-		  </div>
-		  
-	<!-- BCM UCF -->
-		  <div class="flex__container flex--orange animate--start" data-slide="8">
-			<div class="flex__item flex__item--left">
-			  <div class="flex__content">
-				<h1 class = "text--big">Site Redesign</h1>
-				<p class="text--normal">Redesigned the BCM &#64; UCF wordpress site by:</br>
-					- creating a modern and mobile-friendly design</br>
-					- updating brand with images, content and colors</br>
-					- adding a Google Maps, Google Calendar and Facebook Feed API
-				</p>
-				<div class = "skill_icon_container">				
-					<img src = "images/icons/wordpress.png">
-					<img src = "images/icons/php.png">
-					<img src = "images/icons/html.png">
-					<img src = "images/icons/css.png">
-				</div>
-				</div>
-			</div>
-			<div class="flex__item flex__item--right"></div>
-			<a href="http://ucfbcm.com/join-in-test/" target="_blank"><img class="display__img" src = "images/BCM Logo.png"></a>
-		  </div>
-		  
-	<!-- MEDICAL SITE -->
-		  <div class="flex__container flex--green animate--start" data-slide="9">
-			<div class="flex__item flex__item--left">
-			  <div class="flex__content">
-				<h1 class="text--big">Medical Site Template</h1>
-				<p class="text--normal">A template for a small medical company's site, which include
-					an a page for services, patient resources, about us, new patient and testimonials,
-					with many call to action buttons on each page to contact the company.
-					Created with the framework Materialize, and jquery.
-				</p>
-				<div class = "skill_icon_container">				
-					<img src = "images/icons/materialize.png">
-					<img src = "images/icons/jquery.png">
-					<img src = "images/icons/html.png">
-					<img src = "images/icons/css.png">
-					<img src = "images/icons/ps.png">					
-				</div>
-			  </div>
-			</div>
-			<div class="flex__item flex__item--right"></div>
-			<a href="http://aliciamunroe.com/medical" target="_blank"><img class="display__img" src="images/Medical Logo.png" /></a>
-		  </div>
-		  
+		
+			
 	<!-- GRAPHIC DESIGN -->
-		  <div class="flex__container flex--purple animate--start" data-slide="10">
+		  <div class="flex__container flex--red animate--start" data-slide="6">
 			<div class="flex__item flex__item--left">
 			  <div class="flex__content">
 				<h1 class="text--big">Graphic Design</h1>
@@ -284,7 +301,7 @@
 		  </div>
 		
 	<!-- VIDEO DESIGN -->
-		  <div class="flex__container flex--red animate--start" data-slide="11">
+		  <div class="flex__container flex--purple animate--start last" data-slide="7">
 			<div class="flex__item flex__item--left">
 			  <div class="flex__content">
 				<h1 class="text--big">Video Design</h1>
@@ -302,21 +319,6 @@
 			<img class="display__img" src="images/vidart.png" />
 		  </div>
 		
-	<!-- TRADITIONAL ART -->
-		  <div class="flex__container flex--dblue animate--start last" data-slide="12">
-			<div class="flex__item flex__item--left">
-			  <div class="flex__content">
-				<h1 class="text--big">Traditional Art</h1>
-				<p class="text--normal">Examples of traditional art pieces, made with watercolor,
-					charcoal, pen, ink and acrylics. 
-				</p>
-			  </div>
-			</div>
-			<div class="flex__item flex__item--right"></div>
-			<img class="display__img" src="images/tradart.png" />
-		  </div>
-	</div>
-    
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -331,6 +333,7 @@
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="/bower_components/d3/d3.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     

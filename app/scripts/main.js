@@ -1,45 +1,62 @@
-$('#mystory').on('click', function(e) {			
-	$('.work').css('display', 'none');
-	$('.story').css('display', 'inline');
+$('#res-dropdownbttn').mouseenter(function() {
+	$('#res-dropdown').slideDown();
 });
-
-$('#mywork').on('click', function(e) {	
-	$('.story').css('display', 'none');
-	$('.work').css('display', 'inline');
-});		
+$('#res-dropdown').mouseleave(function() {
+	$('#res-dropdown').slideUp();
+});
+$('#res-dropdown').on('click', function() {
+	$('#res-dropdown').slideUp();
+});
+$('#port-dropdownbttn').mouseenter(function() {	
+	$('#port-dropdown').slideDown();
+});	
+$('#port-dropdown').mouseleave(function() {	
+	$('#port-dropdown').slideUp();
+});	
+$('#port-dropdown').on('click', function() {	
+	$('#port-dropdown').slideUp();
+});	
+$('.skill_icon_container').on('click', function() {
+	$('.skillinfo').css('display', 'block');
+});
+$('.accordion-title').on('click', function() {
+	var content = '#' + this.id + '-content';
+	$('.accordion-content').slideUp();
+	$(content).slideDown();
+	
+	var img = '#' + this.id + '-img';
+	$('.accordion-img').css('display','none');
+	$(img).css('display', 'block');
+});
+	
 
 $('body').keydown(function(e) {
 	e.preventDefault();
 	// get current slide
 	var current = $('.flex--active').data('slide');
+	var next;
 	
 	// determine the keypress
-	if ((e.which === 34) || (e.which === 39) || (e.which === 40)){//((e.keywhich === 33) || (e.keywhich === 37) || (e.keywhich === 38)) {	
-		if (current == 12) {
-			var next = $('.first').data('slide');
+	if ((e.which === 34) || (e.which === 39) || (e.which === 40)){//up	
+		if (current == 7) {
+			next = $('.first').data('slide');
 		}
 		else {
-			var next = $('.flex--active').next().data('slide');	
-		}	
-		$('.active').next().addClass('active');			
+			next = $('.flex--active').next().data('slide');	
+		}
+		runSlides(next);		
 	}
-	else if ((e.which === 33) || (e.which === 37) || (e.which === 38)) {
+	if ((e.which === 33) || (e.which === 37) || (e.which === 38)) { //down
 		if (current == 1) {
-			var next = $('.last').data('slide');
+			next = $('.last').data('slide');
 		}
 		else {
-			var next = $('.flex--active').prev().data('slide');	
-		}	
-		$('.active').prev().addClass('active');		
+			next = $('.flex--active').prev().data('slide');	
+		}
+		runSlides(next);			
 	}
-	$('.slide-nav').removeClass('active');
 	
-	$('.slider__wrapper').find('.flex__container[data-slide=' + next + ']').addClass('flex--preStart');
-		$('.flex--active').addClass('animate--end');
-		setTimeout(function() {
-			$('.flex--preStart').removeClass('animate--start flex--preStart').addClass('flex--active');
-			$('.animate--end').addClass('animate--start').removeClass('animate--end flex--active');
-		}, 800);
+	
 });
 
 $('.slide-nav').on('click', function(e) {
@@ -49,25 +66,24 @@ $('.slide-nav').on('click', function(e) {
 	// get button data-slide the user is going to/ clicked on: data is the slide number
 	if ($(this).data('slide') == '999') { var next = '11'; }
 	else { var next = $(this).data('slide'); }
-		
-	$('.slide-nav').removeClass('active');
-	$(this).addClass('active');
 
 	if (current === next) {
 		return false;
 	} else {
-		$('.slider__wrapper').find('.flex__container[data-slide=' + next + ']').addClass('flex--preStart');
-		$('.flex--active').addClass('animate--end');
-		setTimeout(function() {
-			$('.flex--preStart').removeClass('animate--start flex--preStart').addClass('flex--active');
-			$('.animate--end').addClass('animate--start').removeClass('animate--end flex--active');
-		}, 800);
+		runSlides(next);
 	}
 });	
 
 
-
-
+function runSlides (next) {
+	$('.slider__wrapper').find('.flex__container[data-slide=' + next + ']').addClass('flex--preStart');
+			$('.flex--active').addClass('animate--end');
+			setTimeout(function() {
+				$('.flex--preStart').removeClass('animate--start flex--preStart').addClass('flex--active');
+				$('.animate--end').addClass('animate--start').removeClass('animate--end flex--active');
+			}, 800);
+	
+}
 
 if (screen.width <= 450) {
 	var width = 300;
