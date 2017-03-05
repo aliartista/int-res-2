@@ -67,52 +67,87 @@ table {
 	box-sizing: border-box;
 }
 
+/* NAVIGATION ********************************************************************************/
 .navi {
 	position: absolute;
 	top: 0;
-	left: 0;
-	width: 65%;
+	right: 1%;
+	width: 15%;
 	margin-top: 15px;
-	z-index: 999;
+	z-index: 997;
 }
-#navi-contact {
-	position: absolute;
-	top: 0;
-	left: 65%;
-	width: 35%;
-	margin-top: 15px;
-	z-index: 999;
-}
-
-#buttons, #dropdowns {
+#buttons, #res-dropdown, #port-dropdown {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: flex-end;
 }
 #buttons button, #navi-contact button {
-	display: inline-block;
-    padding: 12px 12px;
+    padding: 5px;
     border: 3px solid rgba(255, 255, 255, 1);
     border-radius: 15px;
     text-decoration: none;
     color: #fff;
-    margin: 0 12px;
-	font-size: 24px;	
-	background-color: rgba(0,0,0,0.1);
-	cursor: pointer;
+    margin: 5px 5px;
+	font-size: 1.5em;
+	background-color: rgba(0,0,0,0);
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
+#buttons button:hover, #navi-contact button:hover {	cursor: pointer;}
 #res-dropdown, #port-dropdown {
-	display: none;
-	background-color: rgba(0,0,0,0.1);
-	border-radius: 15px;	
-	margin-top: 10px;
+	display: none;	
 }
-#dropdowns #res-dropdown a, #dropdowns #port-dropdown a {
+#res-dropdown a, #port-dropdown a {
 	color: white;
-	padding: 10px 16px;
+	padding: 5px 16px;
 	text-decoration: none;
 	display: block;
 }
 
+/*CONTACT FORM POPUP*/
+#contact-div {
+	height: 60%;
+	width: 60%;
+	margin: 20%;
+	position: absolute;
+	padding: 5%;
+	background-color: rgba(255,255,255, 0.95);
+	color: #322244;
+	border-radius: 15px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+#contact-div h2 {
+	font-size: 2em;
+	text-align: center;
+}
+#contact-div input, #contact-div label, #contact-div textarea {
+	margin-top: 5px;
+	padding: 5px 0;
+	width: 100%;
+	font-family: 'Raleway';
+	font-weight: 700;
+}
+#contact-div #submitbttn {
+    padding: 12px 12px;
+    border: 3px solid #A78BC6;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #322244;
+	width: auto;
+	background-color: rgba(0,0,0,0);
+}
+#contact-div #submitbttn:hover {cursor: pointer;}
+#contact-div {display: none;}
+#closebttn {
+	position: absolute;
+	right: 24px;
+	font-size: 20px;
+	padding: 0 15px 15px 15px;
+}
+#closebttn:hover {cursor: pointer; }
+
+/* LAYOUT ***********************************************************/
 body {
 	position: relative;
 	font-size: 100%;
@@ -143,11 +178,9 @@ body {
 	width: 100%;
 	z-index: 1;
 }
+.flex__container.flex--active {	z-index: 2; }
 
-.flex__container.flex--active {
-	z-index: 2;
-}
-
+/* TEXT STYLINGS *******************************************************/
 .text--big {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 700;
@@ -161,20 +194,32 @@ body {
 	color: white;
 	margin: 10px 0;
 }
-.subtitle::hover {
+.subtitle:hover {
 	cursor: pointer;
 }
 .text--normal, li {
 	color: rgba(255, 255, 255, 0.9);
 	font-weight: 500;
-	margin-top: 25px;
-	text-overflow: ellipsis;
+	margin-top: 10px;
+	padding-top: 5px;
 }
 
-li {
-	margin:0;
+/* REMADE LITS*/
+.list {
+	list-style: none;
+	padding: 0;
+}
+.list li {
+	margin: 0;
+	padding-left: 15px;
+}
+.list li:before {
+	content: "»";
+	padding-right: 6px;
+	margin-left: -12px;
 }
 
+/*ACCORDIONS*/
 .accordion-content {
 	display: none;
 }
@@ -182,25 +227,25 @@ li {
 	display: none;
 }
 
-@media screen and (min-width: 791px) { /* Have little squares for navigation*/
+@media screen and (min-width: 791px) { 
 	.text--big {
-		font-size: 3.5em;
+		font-size: 3em;
 		line-height: 75px;
 		line-height: 60px;
 	}
 	.subtitle {
-		font-size: 2em;
+		font-size: 1.7em;
 	}
 	#buttons button , #navi-contact button {
 		font-size: 20px;
 		padding: 8px 8px;
 	}
-	.text--normal {
+	.text--normal, li {
 		font-size: 18px;
-		line-height: 24px;
+		line-height: 100%;
 	}	
 	.skill_icon_container img {
-		height: 90px;
+		height: 75px;
 		padding: 10px;
 	}
 	#dropdowns #res-dropdown a, #dropdowns #port-dropdown a {
@@ -209,23 +254,23 @@ li {
 }
 @media screen and (max-width: 790px) and (min-width: 481px) { 
 	.text--big {
-		font-size: 2.5em;
+		font-size: 2.1em;
 		line-height: 40px;
 		padding-top: 10%;
 	}
 	.subtitle {
-		font-size: 1.5em;
+		font-size: 1.2em;
 	}
 	#buttons button , #navi-contact button {
 		font-size: 18px;
 		padding: 10px 10px;
 	}
-	.text--normal {
+	.text--normal, li {
 		font-size: 14px;
-		line-height: 24px;
+		line-height: 100%;
 	}
 	.skill_icon_container img {
-		height: 60px;
+		height: 45px;
 		padding: 5px;
 	}
 	#dropdowns #res-dropdown a, #dropdowns #port-dropdown a {
@@ -239,18 +284,18 @@ li {
 		padding-top: 10%;		
 	}
 	.subtitle {
-		font-size: .7em;
+		font-size: .6em;
 	}
 	#buttons button , #navi-contact button {
 		font-size: 16px;
 		padding: 7px;
 	}
-	.text--normal {
+	.text--normal, li {
 		font-size: 12px;	
-	    line-height: 16px;
+	    line-height: 100%;
 	}
 	.skill_icon_container img {
-		height: 30px;
+		height: 15px;
 		padding: 3px;
 	}
 	#dropdowns #res-dropdown a, #dropdowns #port-dropdown a {
@@ -262,6 +307,9 @@ li {
 	font-style: italic;
 	padding: 0;
 	margin: 0;
+}
+.skill_icon_container {
+	margin-top: 10px;
 }
 
 .flex__item {
@@ -279,7 +327,7 @@ li {
 	-webkit-align-items: center;
 	-moz-align-items: center;
 	-ms-align-items: center;
-	width: 65%;
+	width: 70%;
 	transform-origin: left bottom;
 	transition: transform 0.1s linear 0.4s;
 	opacity: 0;
@@ -288,7 +336,7 @@ li {
 }
 
 .flex__item--right {
-	width: 35%;
+	width: 30%;
 	transform-origin: right center;
 	transition: transform 0.1s linear 0s;
 	opacity: 0;
@@ -322,9 +370,8 @@ li {
 .flex--red .flex__item--right {background: #FCB4AA;color: #3C4859;}
 
 .flex__content {
-	margin-top: 25%;
-	margin-left: 10%;
-	width: 40vw;
+	margin-left: 7%;
+	width: 50vw;
 	opacity: 1;
 	transform: translate3d(0,0,0);
 	transition: transform 0.2s linear 0.2s, opacity 0.1s linear 0.2s;
@@ -333,9 +380,8 @@ li {
 .display__img {
 	position: absolute;
 	bottom: 15%;
-	right:10%;
-	max-width: 35%;
-	max-height: 70%;
+	right: 17%;
+	max-width: 25%;
 	opacity: 1;
 	transform: translate3d(0,0,0);
 	transition: opacity 0.43s 0.6s, transform 0.4s 0.65s cubic-bezier(0, 0.88, 0.4, 0.93);

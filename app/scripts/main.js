@@ -1,4 +1,4 @@
-$('#res-dropdownbttn').mouseenter(function() {
+/*$('#res-dropdownbttn').mouseenter(function() {
 	$('#res-dropdown').slideDown();
 });
 $('#res-dropdown').mouseleave(function() {
@@ -15,7 +15,19 @@ $('#port-dropdown').mouseleave(function() {
 });	
 $('#port-dropdown').on('click', function() {	
 	$('#port-dropdown').slideUp();
-});	
+});	*/
+$('#res-dropdownbttn').on('click', function() {
+	$('.navidropdown').slideUp();
+	$('#res-dropdown').slideDown();
+});
+$('#port-dropdownbttn').on('click', function() {
+	$('.navidropdown').slideUp();
+	$('#port-dropdown').slideDown();
+});
+
+
+
+
 $('.skill_icon_container').on('click', function() {
 	$('.skillinfo').css('display', 'block');
 });
@@ -25,8 +37,14 @@ $('.accordion-title').on('click', function() {
 	$(content).slideDown();
 	
 	var img = '#' + this.id + '-img';
-	$('.accordion-img').css('display','none');
-	$(img).css('display', 'block');
+	$('.accordion-img').slideUp();
+	$(img).slideDown();
+});
+$('#contact').on('click', function() {
+	$('#contact-div').slideDown();	
+});
+$('#closebttn').on('click', function() {
+	$('#contact-div').slideUp();
 });
 	
 

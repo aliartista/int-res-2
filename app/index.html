@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>resume project 4</title>
+    <title>Alicia Munroe</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -31,26 +31,36 @@
      <div class="navi">	
 		<div id = "buttons">
 			<button href = "#" class = "slide-nav" data-slide = "1" id = "res-dropdownbttn">My Story</button>
+				<div id = "res-dropdown" class = "navidropdown">
+					<a href = "#" class = "slide-nav" data-slide = "2" >Education</a>
+					<a href = "#" class = "slide-nav" data-slide = "3" >Skills</a>
+					<a href = "#" class = "slide-nav" data-slide = "4" >Experience</a>
+				</div>
 			<button href = "#" class = "slide-nav" data-slide = "5" id = "port-dropdownbttn">My Work</button>
-		</div>
-		<div id = "dropdowns">
-			<div id = "res-dropdown">
-				<a href = "#" class = "slide-nav" data-slide = "2" >Education</a>
-				<a href = "#" class = "slide-nav" data-slide = "3" >Skills</a>
-				<a href = "#" class = "slide-nav" data-slide = "4" >Experience</a>
-			</div>
-			<div id = "port-dropdown">
-				<a href = "#" class = "slide-nav" data-slide = "5" >Web Design</a>
-				<a href = "#" class = "slide-nav" data-slide = "6" >Graphic Design</a>
-				<a href = "#" class = "slide-nav" data-slide = "7" >Video Design</a>
-			</div>
+				<div id = "port-dropdown" class = "navidropdown">
+					<a href = "#" class = "slide-nav" data-slide = "5" >Web Design</a>
+					<a href = "#" class = "slide-nav" data-slide = "6" >Graphic Design</a>
+					<a href = "#" class = "slide-nav" data-slide = "7" >Video Design</a>
+				</div>
+			<button href="#" id = "contact">Contact</button>
 		</div>
 	</div>
-	<div id = "navi-contact">
-		<button href="#">Contact</button> 		
-	</div>
-
 	
+	<div id = "contact-div" style = "z-index: 997;">
+		<span id = "closebttn">&times;</span>
+		<h2>Contact</h2><br/>
+		<form action = "/scripts/contact.php" method = "POST">
+			<label for = "name">Name </label>
+				<input type = "text" id = "name" name = "name"><br/><br/>
+			<label for = "email">Email </label>
+				<input type = "text" id = "email" name = "email"><br/><br/>
+			<label for = "msg">Message </label>
+				<textarea id = "msg" name = "msg"></textarea><br/><br/>
+			<div style = "display: flex; justify-content: center;">
+				<input type = "submit" id = "submitbttn" value = "Send Message">
+			</div>
+		</form>
+	</div>
 	
 	<div class="slider__wrapper">
 	<!--  LANDING PAGE: NAME -->
@@ -77,10 +87,11 @@
 			  <div class="flex__content">
 				<h1 class = "text--big">Education</h1>
 				<p class="text--normal">Web Development and Design Major at the University of Central Florida<br/>
-					<ul>
+					<ul class = "list">
 						<li>Minors: Graphic Design and Information Technology</li>
 						<li>GPA: 3.58</li>
 						<li>Expected Graduation: December 2017</li>
+						<li>Intermediate Spanish speaking skills</li>
 					</ul>
 				</p>
 			  </div>
@@ -156,7 +167,7 @@
 					<div class = "accordion-content" id = "experience-oc-content">
 						<p class="text--normal">
 							May 2016 - Present: Orange County Government, Internal Systems and Services
-							<ul>
+							<ul class = "list">
 								<li>Utilized Dot Net Nuke and Sharepoint with html and css to manage the development 
 									and live sites for the intranet</li>
 								<li>Developped documentation for the Intranet redesign, and trained the HR department
@@ -177,7 +188,7 @@
 					<div class = "accordion-content" id = "experience-cc-content">
 						<p class = "text--normal"> 
 							Feb 2016 - Dec 2016: Crossman and Co<br/>
-							<ul>
+							<ul class = "list">
 								<li>Edited videos about grocery centers on the market by editing raw 
 									footage, creating graphic assets, mixing music, and compiling assets 
 									into an informative video in Premiere</li>
@@ -227,7 +238,7 @@
 					<div class = "accordion-content" id = "web-design-bcm-content">
 						<p class = "text--normal">
 							Redesigned the BCM &#64; UCF wordpress site by:
-							<ul>
+							<ul class = "list">
 								<li>creating a modern and mobile-friendly design</li>
 								<li>updating brand with images, content and colors</li>
 								<li>adding a Google Maps, Google Calendar and Facebook Feed API</li>
@@ -288,6 +299,11 @@
 				<h1 class="text--big">Graphic Design</h1>
 				<p class="text--normal">Examples of graphic work, such as infographics, typography,
 					posters and logos, using Photoshop, Illustrator and InDesign.
+					<ul class = "list">
+						<li>Top Right: Poster for International Cancer Awareness Week, dislay different fruits that are helpful in fighting cancer.</li>
+						<li>Top 3 Left: Posters displaying different typographys and their alphabets.</li>
+						<li>Bottom: Logo design for Smart Tech, from rough sketch to final design on different backgrounds.</li>
+					</ul>
 				</p>
 				<div class = "skill_icon_container">				
 					<img src = "images/icons/ps.png">
@@ -297,7 +313,7 @@
 			  </div>
 			</div>
 			<div class="flex__item flex__item--right"></div>
-			<img class="display__img" src="https://s4.postimg.org/malmhgn9p/zekrom.png" />
+			<img class="display__img" src="images/graart.png" />
 		  </div>
 		
 	<!-- VIDEO DESIGN -->
@@ -316,7 +332,7 @@
 			  </div>
 			</div>
 			<div class="flex__item flex__item--right"></div>
-			<img class="display__img" src="images/vidart.png" />
+			<a href = "https://www.youtube.com/playlist?list=PLAh2ssTJM1JMJXC1YaSpSzsS71QeLbmr7" target = "_blank"><img class="display__img" src="images/vidart.png" /></a>
 		  </div>
 		
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
