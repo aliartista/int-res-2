@@ -1,21 +1,3 @@
-/*$('#res-dropdownbttn').mouseenter(function() {
-	$('#res-dropdown').slideDown();
-});
-$('#res-dropdown').mouseleave(function() {
-	$('#res-dropdown').slideUp();
-});
-$('#res-dropdown').on('click', function() {
-	$('#res-dropdown').slideUp();
-});
-$('#port-dropdownbttn').mouseenter(function() {	
-	$('#port-dropdown').slideDown();
-});	
-$('#port-dropdown').mouseleave(function() {	
-	$('#port-dropdown').slideUp();
-});	
-$('#port-dropdown').on('click', function() {	
-	$('#port-dropdown').slideUp();
-});	*/
 $('#res-dropdownbttn').on('click', function() {
 	$('.navidropdown').slideUp();
 	$('#res-dropdown').slideDown();
@@ -73,8 +55,14 @@ $('body').keydown(function(e) {
 		}
 		runSlides(next);			
 	}
-	
-	
+	if ( ((current == 4) && (next == 5)) || ((current == 1) && (next == 7)) ) { //going from my story to my work
+		$('.navidropdown').slideUp();
+		$('#port-dropdown').slideDown();
+	}
+	if ( ((current == 7) && (next == 1)) || ((current == 5) && (next == 4)) ) { //going from work to story
+		$('.navidropdown').slideUp();
+		$('#res-dropdown').slideDown();
+	}
 });
 
 $('.slide-nav').on('click', function(e) {
@@ -103,17 +91,25 @@ function runSlides (next) {
 	
 }
 
-if (screen.width <= 450) {
-	var width = 300;
-	var height = 240;
+/***    D3 CIRCLE DIAGRAM    **/
+
+
+
+if (screen.height <= 767) {  // up to 568
+	var width = 284;
+	var height = 227;
 }
-else if (screen.width <= 768) {
-	var width = 525;
-	var height = 420;
+else if (screen.height <= 799) {  // up to 768
+	var width = 384;
+	var height = 307;
 }
-else {
-	var width = 750;
-	var height = 600;
+else if (screen.height <= 1079) {  // up to 800
+	var width = 400;
+	var height = 320;
+}
+else {						//1080 and over
+	var width = 540;
+	var height = 432;
 }
 
 var radius = Math.min(width, height) / 2;
@@ -196,20 +192,6 @@ function createVisualization(json) {
 
   // Get total size of the tree = value of root node from partition.
   totalSize = path.datum().value;
-  
-  //Draw bar graph
-  d3.select('#bargraph')
-		.attr('width', width/2)
-		.attr('height', height)
-		.attr('background-color', 'red');
-	
-	
-  
-  
-  
-  
-  d3.select('#bargraph').on('mouseleave', mouseleave);
-  
  };
 
 // Fade all but the current sequence, and show it in the breadcrumb trail.
@@ -236,9 +218,7 @@ function mouseover(d) {
       .filter(function(node) {
                 return (sequenceArray.indexOf(node) >= 0);
               })
-      .style('opacity', 1);
-	  
-  
+      .style('opacity', 1); 
 }
 
 // Restore everything to full opacity when moving off the visualization.

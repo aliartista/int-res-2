@@ -105,9 +105,9 @@ table {
 
 /*CONTACT FORM POPUP*/
 #contact-div {
-	height: 60%;
-	width: 60%;
-	margin: 20%;
+	height: 80vh;
+	width: 80vw;
+	margin: 10vh 0 0 10vw;
 	position: absolute;
 	padding: 5%;
 	background-color: rgba(255,255,255, 0.95);
@@ -245,14 +245,15 @@ body {
 		line-height: 100%;
 	}	
 	.skill_icon_container img {
-		height: 75px;
-		padding: 10px;
+		height: 60px;
+		padding: 5px;
 	}
 	#dropdowns #res-dropdown a, #dropdowns #port-dropdown a {
 		font-size: 16px;
 	}
 }
 @media screen and (max-width: 790px) and (min-width: 481px) { 
+	.navi { width: 28%;	}
 	.text--big {
 		font-size: 2.1em;
 		line-height: 40px;
@@ -270,14 +271,15 @@ body {
 		line-height: 100%;
 	}
 	.skill_icon_container img {
-		height: 45px;
-		padding: 5px;
+		height: 30px;
+		padding: 4px;
 	}
 	#dropdowns #res-dropdown a, #dropdowns #port-dropdown a {
 		font-size: 16px;
 	}
 }
 @media screen and (max-width: 480px) and (min-width: 150px) {
+	.navi { width: 30%;	}
 	.text--big {
 		font-size: 1em;
 		line-height: 15px;
@@ -309,7 +311,7 @@ body {
 	margin: 0;
 }
 .skill_icon_container {
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 .flex__item {
@@ -410,67 +412,6 @@ body {
 
 /******   D3 CHARTS: SUNBURST, IMAGE BUBBLES   ******/
 /*  SUNBURST */
-@media only screen and (max-width: 1026px) { 
-	#chart {
-		  position: relative;
-	}
-	#chart path {
-		  stroke: #fff;
-	}
-	#main {
-		  float: left;
-		  width: 300px;
-	}
-	#sidebar {
-		  float: right;
-		  width: 40px;
-	}
-	#chart {
-		  position: relative;
-	}
-	#chart path {
-		  stroke: #fff;
-	}
-	#displaySkill {
-		  position: absolute;
-		  top: 104px;
-		  left: 122px;
-		  width: 56px;
-		  text-align: center;
-		  color: #666;
-		  z-index: -1;
-	}
-	#skillName {
-		  font-size: 1em;
-	}
-}
-@media only screen and (min-width: 1027px) { 
-	#chart {
-		position: relative;
-	}
-	#chart path {
-		stroke: #fff;
-	}
-	#explanation {
-		position: absolute;
-		top: 260px;
-		left: 305px;
-		width: 140px;
-		text-align: center;
-		color: #666;
-		z-index: -1;
-	}
-	#percentage {
-		font-size: 2.5em;
-	}
-	#main {
-		float: left;
-		width: 750px;
-	}
-	#sidebar {
-		float: right;
-		width: 100px;
-	}
 	#chart {
 		position: relative;
 	}
@@ -478,15 +419,10 @@ body {
 		stroke: #fff;
 	}
 	#displaySkill {
-		position: absolute;
-		top: 260px;
-		left: 305px;
-		width: 140px;
-		text-align: center;
-		color: #666;
+		color: white;
 		z-index: -1;
 	}
-	#skillName {
-		font-size: 2.5em;
-	}
-}
+@media only screen and (min-height: 1080px) { #main { float: left; width: 540px; }}
+@media only screen and (min-height: 800px) and (max-height: 1079px) { #main { float: left; width: 400px; }}
+@media only screen and (min-height: 768px) and (max-height: 799px) { #main { float: left; width: 384px; }}
+@media only screen and (min-height: 568px) and (max-height: 767px) { #main { float: left; width: 284px; }}
